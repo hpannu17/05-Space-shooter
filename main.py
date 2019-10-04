@@ -10,16 +10,21 @@ logger = logging.getLogger(__name__)
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-SCREEN_TITLE = ""
+SCREEN_TITLE = "Space Shooter"
 
+ENEMY_COUNT = 4
+PLAYER_HEALTH = 10
+ENEMY_HEALTH = 3
+PLAYER_DAMAGE = 1
+ENEMY_DAMAGE = 1
 
 class Window(arcade.Window):
 
     def __init__(self, width, height, title):
-
+        
         # Call the parent class's init function
         super().__init__(width, height, title)
-
+        
         # Make the mouse disappear when it is over the window.
         # So we just see our object, not the pointer.
         self.set_mouse_visible(False)
