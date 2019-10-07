@@ -16,11 +16,6 @@ OFFSCREEN_SPACE = 300
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Space Shooter"
-LEFT_LIMIT = -OFFSCREEN_SPACE
-RIGHT_LIMIT = SCREEN_WIDTH + OFFSCREEN_SPACE
-BOTTOM_LIMIT = -OFFSCREEN_SPACE
-TOP_LIMIT = SCREEN_HEIGHT + OFFSCREEN_SPACE
-
 
 class TurningSprite(arcade.Sprite):
     def update(self):
@@ -28,7 +23,7 @@ class TurningSprite(arcade.Sprite):
         self.angle = math.degrees(math.atan2(self.change_y, self.change_x))
 
 
-class ShipSprite(arcade.Sprite):
+class UFOSprite(arcade.Sprite):
 
     def __init__(self, filename, scale):
         super().__init__(filename, scale)
@@ -127,7 +122,7 @@ class MyGame(arcade.Window):
         self.laser_list = arcade.SpriteList()
         self.ship_life_list = arcade.SpriteList()
         self.score = 0
-        self.player_sprite = ShipSprite("images/spaceshooter/PNG/ufoYellow.png", SCALE)
+        self.player_sprite = UFOSprite("images/spaceshooter/PNG/ufoYellow.png", SCALE)
         self.all_sprites_list.append(self.player_sprite)
         self.lives = 3
 
@@ -139,8 +134,8 @@ class MyGame(arcade.Window):
             enemy_sprite = AsteroidSprite(image_list[image_no], SCALE)
             enemy_sprite.guid = "Asteroid"
 
-            enemy_sprite.center_y = random.randrange(BOTTOM_LIMIT, TOP_LIMIT)
-            enemy_sprite.center_x = random.randrange(LEFT_LIMIT, RIGHT_LIMIT)
+            enemy_sprite.center_y = random.randrange(0, 800)
+            enemy_sprite.center_x = random.randrange(0, 600)
 
             enemy_sprite.change_x = random.random() * 2 - 1
             enemy_sprite.change_y = random.random() * 2 - 1
